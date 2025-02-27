@@ -24,3 +24,7 @@
 
 ![image](https://github.com/user-attachments/assets/400fbe9f-86b9-4b52-9cbd-ba3143a2f6b6)
 
+# Update Data Table Rows - Standard Type
+
+![image](https://github.com/user-attachments/assets/682b5112-dcde-4b54-9900-16403090c8c9)
+
