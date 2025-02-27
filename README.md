@@ -1,1 +1,1 @@
-# -Lightning-Data-Table
+# Lightning-Data-Table
