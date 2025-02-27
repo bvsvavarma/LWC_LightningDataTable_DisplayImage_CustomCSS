@@ -20,3 +20,7 @@
 
 ![image](https://github.com/user-attachments/assets/0e4fbe0f-fa19-48ed-b30a-0648b7d3bb2d)
 
+# Apply Styles on a Column
+
+![image](https://github.com/user-attachments/assets/400fbe9f-86b9-4b52-9cbd-ba3143a2f6b6)
+
