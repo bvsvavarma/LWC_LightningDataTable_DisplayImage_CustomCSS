@@ -70,4 +70,10 @@
 
 ![image](https://github.com/user-attachments/assets/4f5355b0-d7e3-4307-b690-f74e118b33f4)
 
+# Hide Default Header Actions
+1. The default header actions available on each column are Wrap Text and Clip Text.
+2. To hide the drop down menu with the default header action on a column, pass in the hideDefaultActions property.
+3. If hideDefaultActions is set to tru on a column that has custom header actions, the "Clip text" and "Wrap text" actions are removed from the action dropdown menu, and the content is clipped by default.
+
+![image](https://github.com/user-attachments/assets/cc305fa8-35fd-45c8-84e1-18d1b094a97c)
 
