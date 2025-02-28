@@ -52,4 +52,11 @@
 
 ![image](https://github.com/user-attachments/assets/c2185ca5-c174-4f54-a33d-e4f98c806a79)
 
+# Row-Level Actions
+1. Row-level actions refer to tasks you can perform on a row of data, such as updating or deleting the row.
+2. Static actions apply to all rows on the table.
+3. You can perform actions on each row and handle them using the onrowaction event handler.
+
+![image](https://github.com/user-attachments/assets/e47c17bc-d126-4c62-a7f7-061b189b2f47)
+
 
