@@ -82,3 +82,14 @@
 
 ![image](https://github.com/user-attachments/assets/21d59ecc-6472-4b6a-93d7-1a92cfc3cf09)
 
+# Wrapper Class
+1. Wrapper class is a class within a class that stores a group of similar or different data type variables into a single object.
+2. The use of Wrapper class helps the developer in organizing the concerned data efficiently, provide the data is properly nested.
+
+![image](https://github.com/user-attachments/assets/a8974234-6cbd-4a8f-8f0c-2c7b85a80eb2)
+
+# Row Selection
+Selecting the checkbox selects the entire row of data and triggers the onrowselection event handler.
+
+![image](https://github.com/user-attachments/assets/4aa85087-3b3a-4894-bd78-88611062aab8)
+
