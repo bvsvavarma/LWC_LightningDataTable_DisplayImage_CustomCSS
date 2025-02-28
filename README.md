@@ -63,5 +63,11 @@
 
 ![image](https://github.com/user-attachments/assets/e05b4ee6-1d00-432a-a555-289aae8b4ffd)
 
+# Header Actions
+1. Header actions refer to tasks you can perform on a column of data, such as displaying only rows that meet a criteria provided by the olumn.
+2. You can perform actions on a column and handle them using the onheaderaction event handler.
+3. Header actions are available in the dropdown menu in the column header.
+
+![image](https://github.com/user-attachments/assets/4f5355b0-d7e3-4307-b690-f74e118b33f4)
 
 
