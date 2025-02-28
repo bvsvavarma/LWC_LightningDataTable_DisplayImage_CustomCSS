@@ -77,3 +77,8 @@
 
 ![image](https://github.com/user-attachments/assets/cc305fa8-35fd-45c8-84e1-18d1b094a97c)
 
+# Define Header Actions
+1. Bind the header actions to the actions column attribute, which can be done during initialization.
+
+![image](https://github.com/user-attachments/assets/21d59ecc-6472-4b6a-93d7-1a92cfc3cf09)
+
