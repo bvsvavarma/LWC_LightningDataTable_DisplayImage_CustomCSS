@@ -28,6 +28,7 @@
 
 ![image](https://github.com/user-attachments/assets/682b5112-dcde-4b54-9900-16403090c8c9)
 
+
 # Update Data Table Rows - Custom Type
 1. To make your custom data type editable in lightning-datatable, create an additional template to implement the UI for inline editing of the data type.
 2. These high-level steps add inline edit capability.
