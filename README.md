@@ -48,5 +48,8 @@
 
 ![image](https://github.com/user-attachments/assets/c784d30e-f303-4346-a19e-f3a55753b065)
 
+# Make the Custom Type Editable
+
+![image](https://github.com/user-attachments/assets/c2185ca5-c174-4f54-a33d-e4f98c806a79)
 
 
