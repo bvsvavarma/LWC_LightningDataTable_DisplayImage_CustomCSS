@@ -107,3 +107,6 @@ Delete Button should be enabled only when at least 1 record is selected.
 
 ![image](https://github.com/user-attachments/assets/ed1fe262-eefd-4a20-be03-a615e16766a1)
 
+# Infinite Loading Approaches
+1. Using OFFSET: Typically this is the best approach for infinite loading if we know well in advance that the records being rendered by lightning-datatable are well under 2000 since we have certain limitations in using OFFSET in SOQL.
+2. Using ID Field: ID fields are indexed fields and are auto-generated in some random fashion. But they have a unique property, each time an ID is generated, the ASCII value is greater than all previously generated ID. We can simply use the last record ID in the table and retrieve the next lot of fresh records.
