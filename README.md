@@ -36,6 +36,7 @@
    ii. Add the edit template to the custom type definition.
    iii. Make the custom type editable in the column definition.
 
+
 # Create an edit template
 
 ![image](https://github.com/user-attachments/assets/85468e83-298b-4e7b-80e6-607e8b892180)
