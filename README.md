@@ -34,10 +34,10 @@
 2. These high-level steps add inline edit capability.
    
    i. Create an edit template.
+   
    ii. Add the edit template to the custom type definition.
+   
    iii. Make the custom type editable in the column definition.
-
-
 
 
 # Create an edit template
