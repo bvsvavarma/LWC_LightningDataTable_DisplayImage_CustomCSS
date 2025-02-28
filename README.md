@@ -93,3 +93,10 @@ Selecting the checkbox selects the entire row of data and triggers the onrowsele
 
 ![image](https://github.com/user-attachments/assets/4aa85087-3b3a-4894-bd78-88611062aab8)
 
+# Use Case for Wrapper Class
+Add 2 additional columns in Data Table.
+1. Count of cases for the contact.
+2. Is Contact a Bad Contact (If Lead Source is Phone Inquiry and Phone Number is not present)
+
+Also enable the users to delete multiple contacts only if for all sected records, Cases count is 0, Otherwise raise a error message.
+Delete Button should be enabled only when at least 1 record is selected.
