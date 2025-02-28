@@ -100,3 +100,10 @@ Add 2 additional columns in Data Table.
 
 Also enable the users to delete multiple contacts only if for all sected records, Cases count is 0, Otherwise raise a error message.
 Delete Button should be enabled only when at least 1 record is selected.
+
+# Lazy Loading and Infinite Scrolling
+1. Lazy loading helps you to load the data only when it is required. Lazy loading is an optimization technique to load the content on-demand.
+2. Infinite scrolling (enable-infinite-loading) enables you to load a subset of data and then load more data when users scroll to the end of the table.
+
+![image](https://github.com/user-attachments/assets/ed1fe262-eefd-4a20-be03-a615e16766a1)
+
