@@ -1,11 +1,11 @@
 <template>
     <template lwc:if={contactData}>
-        <lightning-datatable
+        <c-cutom-data-type
             key-field="Id"
             data={contactData}
             columns={columns}
             onsave={saveHandler}
             draft-values={draftValues}
-        ></lightning-datatable>
+        ></c-cutom-data-type>
     </template>
 </template>

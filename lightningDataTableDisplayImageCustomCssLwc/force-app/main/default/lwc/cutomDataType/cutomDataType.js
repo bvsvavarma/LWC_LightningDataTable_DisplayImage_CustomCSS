@@ -2,6 +2,8 @@ import LightningDataTable from 'lightning/datatable';
 import customNameTemplate from './customName.html';
 import customRankTemplate from './customRank.html';
 import customImageTemplate from './customImage.html';
+import customPickListTemplate from './customPickList.html';
+import customPickListEditTemplate from './customPickListEdit.html';
 
 export default class CutomDataType extends LightningDataTable {
     static customTypes = {
@@ -19,6 +21,12 @@ export default class CutomDataType extends LightningDataTable {
             template: customImageTemplate,
             standardCellLayout: true,
             typeAttributes: ["pictureUrl"],
+        },
+        customPickList: {
+            template: customPickListTemplate,
+            editTemplate: customPickListEditTemplate,
+            standardCellLayout: true,
+            typeAttributes: ["options", "value", "context"],
         }
     };
 }
