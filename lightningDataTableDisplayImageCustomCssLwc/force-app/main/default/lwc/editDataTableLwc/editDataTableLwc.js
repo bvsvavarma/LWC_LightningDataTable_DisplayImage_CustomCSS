@@ -42,6 +42,20 @@ const columns = [
         typeAttributes: {
             rowActions: actions
         }
+    },
+    {
+        label: 'Case Count',
+        fieldName: 'numberOfCases',
+        type: 'number',
+        editable: false,
+        hideDefaultActions: true,
+    },
+    {
+        label: 'Bad Contact',
+        fieldName: 'isBadContact',
+        type: 'boolean',
+        editable: false,
+        hideDefaultActions: true,
     }
 ];
 
@@ -59,6 +73,7 @@ export default class EditDataTableLwc extends LightningElement {
     loadActionCompleted= false;
     loadSourceActions;
     contactAllData = [];
+    disableMe = true;
     @wire(getContactsBasedOnAccount, {
         accountId :  '$recordId',
         pickList : '$leadSourceOptions'
@@ -217,6 +232,59 @@ export default class EditDataTableLwc extends LightningElement {
             return true;
         } else{
             return false;
+        }
+    }
+    selectRowsHandler(event){
+        const selectedRows = event.detail.selectedRows;
+        if(selectedRows.length > 0){
+            this.disableMe = false;
+        }else{
+            this.disableMe = true;
+        }
+    }
+
+    async deleteRecordHandler(event){
+        //Case count is 0 or not
+        let selectedRecords =  this.template.querySelector("c-cutom-data-type").getSelectedRows();
+        let allGoodRecords = true;
+        let selectedRecordsHaveCases = selectedRecords.filter((currItem) => {
+            currItem.numberOfCase > 0
+        });
+        if(selectedRecordsHaveCases.length > 0){
+            allGoodRecords = false;
+        }
+        if(allGoodRecords){
+            //delete operation
+            let deletedRecordsConfirmation = selectedRecords.map((currItem) => deleteRecord(currItem.Id));
+            try{
+                await Promise.all(deletedRecordsConfirmation);
+                const toastEvent = new ShowToastEvent({
+                    title: 'Success',
+                    message:
+                        'Records Deleted Successfully.',
+                    variant : "Success"
+                });
+                this.dispatchEvent(toastEvent);
+                this.template.querySelector("c-cutom-data-type").selectedRows = [];
+                await refreshApex(this.contactRefreshProp);
+            }catch(error){
+                const event = new ShowToastEvent({
+                    title: 'Error',
+                    message:
+                        'Delete Failed.' + error.body.message,
+                    variant : "error"
+                });
+                this.dispatchEvent(event);
+            }
+        }else{
+            //error message
+            const events = new ShowToastEvent({
+                title: 'Error',
+                message:
+                    'Selected Contact have active cases.',
+                variant : "error"
+            });
+            this.dispatchEvent(events);
         }
     }
 }
