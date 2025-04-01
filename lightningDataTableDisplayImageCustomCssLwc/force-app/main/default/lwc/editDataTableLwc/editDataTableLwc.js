@@ -13,12 +13,17 @@ const actions = [
                     {label:'Edit', name : 'edit'},
                     {label:'Delete', name : 'delete'}
                 ];
+
+const DEFAULT_ACTION = [ 
+                    {label:'All', checked: true, name : 'all'}
+                ];
+
 const columns = [
-    { label: 'First Name', fieldName: 'FirstName', editable: true },
-    { label: 'Last Name', fieldName: 'LastName', editable: true },
-    { label: 'Title', fieldName: 'Title', editable: true },
-    { label: 'Email', fieldName: 'Email', type: 'email', editable: true},
-    { label: 'Phone', fieldName: 'Phone', type: 'phone', editable: true},
+    { label: 'First Name', fieldName: 'FirstName', editable: true, hideDefaultActions: true },
+    { label: 'Last Name', fieldName: 'LastName', editable: true, hideDefaultActions: true },
+    { label: 'Title', fieldName: 'Title', editable: true, hideDefaultActions: true },
+    { label: 'Email', fieldName: 'Email', type: 'email', editable: true, hideDefaultActions: true},
+    { label: 'Phone', fieldName: 'Phone', type: 'phone', editable: true, hideDefaultActions: true},
     { 
         label: 'Lead Source', 
         fieldName: 'LeadSource', 
@@ -28,7 +33,9 @@ const columns = [
             options: {fieldName : 'pickListOptions'},
             value: {fieldName : 'LeadSource'},
             context: {fieldName : 'Id'},
-        }
+        },
+        hideDefaultActions: true,
+        actions: DEFAULT_ACTION
     },
     {
         type: 'action',
@@ -49,6 +56,9 @@ export default class EditDataTableLwc extends LightningElement {
     editMode = false;
     showModal = false;
     selectedRecordId;
+    loadActionCompleted= false;
+    loadSourceActions;
+    contactAllData = [];
     @wire(getContactsBasedOnAccount, {
         accountId :  '$recordId',
         pickList : '$leadSourceOptions'
@@ -64,7 +74,7 @@ export default class EditDataTableLwc extends LightningElement {
                     pickListOptions: pickListOptions
                 };
             });
-            console.log("contact data", this.contactData);
+            this.contactAllData = [...this.contactData];
         }else if(result.error){
             console.log("Error while Loading Records", result.error);
         }
@@ -80,6 +90,20 @@ export default class EditDataTableLwc extends LightningElement {
     }) wirePickList({data,error}){
         if(data){
             this.leadSourceOptions = data.values;
+             this.loadSourceActions = [];
+             data.values.forEach((currItem) => {
+                this.loadSourceActions.push({
+                    label: currItem.label,
+                    checked: false,
+                    name: currItem.name
+                });
+            });
+            this.columns.forEach((currItem) => {
+                if(currItem.fieldName === 'LeadSource'){
+                    currItem.actions = [...currItem.actions, ...this.leadSourceOptions];
+                }
+            });
+            this.loadActionCompleted = true;
         }else if(error){
             console.log("Error While Loading Data", error);
         }
@@ -115,7 +139,6 @@ export default class EditDataTableLwc extends LightningElement {
             await refreshApex(this.contactRefreshProp);
     }
     rowActionHandler(event){
-        debugger;
         let action = event.detail.action;
         let row = event.detail.row;
         this.selectedRecordId = row.Id;
@@ -152,6 +175,48 @@ export default class EditDataTableLwc extends LightningElement {
         this.showModal = false; 
         if(this.editMode){
             await refreshApex(this.contactRefreshProp);
+        }
+    }
+
+    handleHeaderAction(event){
+        debugger;
+          // Retrieves the name of the selected filter
+        const detail = event.detail;
+        const action = event.detail.action;
+        let actionName = action.name;
+        // Retrieves the current column definition
+        // based on the selected filter
+        const colDef = event.detail.columnDefinition;
+        const cols = this.columns;
+
+        console.log("action", action);
+        console.log("actionName", actionName);
+        console.log("colDef", colDef);
+        console.log("cols", cols);
+        
+        /*if(actionName === 'all'){
+            this.contactData = this.contactAllData;
+        }else{
+            this.contactAllData.filter((currItem) => {
+                actionName === currItem["LeadSource"]
+            })
+        }
+        cols
+            .find((currItem) => (currItem.fieldName === "LeadSource")
+            .actions.forEach((currItem) => {
+                if(currItem.name === actionName){
+                    currItem.checked = true;
+                }
+            })
+        );
+        this.columns = [...cols];*/
+    }
+
+    get displayData(){
+        if(this.contactData && this.loadActionCompleted === true){
+            return true;
+        } else{
+            return false;
         }
     }
 }

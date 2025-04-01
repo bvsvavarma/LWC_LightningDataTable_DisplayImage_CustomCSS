@@ -1,5 +1,5 @@
 <template>
-    <template lwc:if={contactData}>
+    <template lwc:if={displayData}>
         <c-cutom-data-type
             key-field="Id"
             data={contactData}
@@ -7,6 +7,7 @@
             onsave={saveHandler}
             draft-values={draftValues}
             onrowaction={rowActionHandler}
+            onheaderaction={handleHeaderAction}
         ></c-cutom-data-type>
         <template lwc:if={showModal}>
             <c-custom-modal-for-data-table-lwc
